@@ -56,6 +56,7 @@ public class MonkAndInversion {
         return count;
     }
 
+
 }
 
 /*
