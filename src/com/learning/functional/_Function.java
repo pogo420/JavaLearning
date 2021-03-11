@@ -1,5 +1,6 @@
 package com.learning.functional;
 
+import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -19,6 +20,8 @@ public class _Function {
         System.out.println(evenCheck.and(tenCheck).test(1302));
 
         System.out.println(getUrl.get());
+
+        Optional.ofNullable(1).ifPresent(x -> System.out.println("Default vale"));
     }
 
     // functional approach
@@ -35,4 +38,7 @@ public class _Function {
     private static int inc(int val) {
         return val + 1;
     }
+
+
+
 }
