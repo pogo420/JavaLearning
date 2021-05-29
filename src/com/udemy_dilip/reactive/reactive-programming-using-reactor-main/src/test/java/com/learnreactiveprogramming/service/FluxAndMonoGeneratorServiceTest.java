@@ -19,4 +19,50 @@ public class FluxAndMonoGeneratorServiceTest {
                 .expectNextCount(4)
                 .verifyComplete();
     }
+
+    @Test
+    void namedFluxFilter(){
+        Flux<String> namesFlux=  testObject.namesFluxFilter(3);
+        StepVerifier
+                .create(namesFlux)
+                .expectNextCount(4)
+                .verifyComplete();
+    }
+
+    @Test
+    void namedFluxFilterFm(){
+        Flux<String> namesFlux=  testObject.namesFluxFilterFm(3);
+        StepVerifier
+                .create(namesFlux)
+                .expectNextCount(27)
+                .verifyComplete();
+    }
+
+    @Test
+    void namesFluxFilterFmAsync() {
+        Flux<String> namesFlux=  testObject.namesFluxFilterFmAsync(3);
+        StepVerifier
+                .create(namesFlux)
+                .expectNextCount(27)
+                .verifyComplete();
+    }
+
+    @Test
+    void namesFluxTransform() {
+
+        Flux<String> namesFlux=  testObject.namesFluxTransform(6);
+        StepVerifier
+                .create(namesFlux)
+                .expectNext("default")
+                .verifyComplete();
+    }
+
+    @Test
+    void namesFluxTransformSwitchIfEmpty() {
+        Flux<String> namesFlux=  testObject.namesFluxTransformSwitchIfEmpty(6);
+        StepVerifier
+                .create(namesFlux)
+                .expectNextCount(9)
+                .verifyComplete();
+    }
 }
