@@ -114,6 +114,23 @@ public class FluxAndMonoGeneratorService {
                 .switchIfEmpty(aDefault);
     }
 
+    public Flux<String> check_concat(){
+        // combines two flux or mono
+        Flux<String> flux1 = Flux.just("A", "B", "C");
+        Flux<String> flux2 = Flux.just("D", "E", "F");
+
+        return Flux.concat(flux1, flux2);
+    }
+
+    public Flux<String> check_concatwith(){
+        // combines two flux or mono, concatWith is instance method or mono as we ll as flux.
+        Mono<String> flux1 = Mono.just("A");
+        Mono<String> flux2 = Mono.just("D");
+
+        return flux1.concatWith(flux2);
+    }
+
+
 
     public static void main(String[] args) {
         FluxAndMonoGeneratorService fluxAndMonoGeneratorService = new FluxAndMonoGeneratorService();

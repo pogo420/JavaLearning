@@ -65,4 +65,24 @@ public class FluxAndMonoGeneratorServiceTest {
                 .expectNextCount(9)
                 .verifyComplete();
     }
+
+    @Test
+    void check_concat() {
+
+        Flux<String> namesFlux=  testObject.check_concat();
+        StepVerifier
+                .create(namesFlux)
+                .expectNext("A","B","C", "D", "E", "F")
+                .verifyComplete();
+    }
+
+    @Test
+    void check_concatwith() {
+
+        Flux<String> namesFlux=  testObject.check_concatwith();
+        StepVerifier
+                .create(namesFlux)
+                .expectNext("A","D")
+                .verifyComplete();
+    }
 }
