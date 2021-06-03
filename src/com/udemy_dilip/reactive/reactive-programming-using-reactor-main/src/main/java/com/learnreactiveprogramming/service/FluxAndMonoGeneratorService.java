@@ -130,6 +130,14 @@ public class FluxAndMonoGeneratorService {
         return flux1.concatWith(flux2);
     }
 
+    public Flux<String> check_merge(){
+        // combines two flux or mono
+        Flux<String> flux1 = Flux.just("A", "B", "C").delayElements(Duration.ofMillis(100));
+        Flux<String> flux2 = Flux.just("D", "E", "F").delayElements(Duration.ofMillis(123));
+
+        return Flux.merge(flux1, flux2);
+    }
+
 
 
     public static void main(String[] args) {
@@ -141,6 +149,7 @@ public class FluxAndMonoGeneratorService {
 //        fluxAndMonoGeneratorService.namesMonoFlatMap().subscribe(System.out::println);
 //        fluxAndMonoGeneratorService.namesMonoFlatMapMany().subscribe(System.out::println);
 
-        fluxAndMonoGeneratorService.namesFluxTransform(3).subscribe(System.out::println);
+//        fluxAndMonoGeneratorService.namesFluxTransform(3).subscribe(System.out::println);
+        fluxAndMonoGeneratorService.check_merge().subscribe(System.out::println);
     }
 }

@@ -85,4 +85,14 @@ public class FluxAndMonoGeneratorServiceTest {
                 .expectNext("A","D")
                 .verifyComplete();
     }
+
+    @Test
+    void check_merge() {
+
+        Flux<String> namesFlux=  testObject.check_merge();
+        StepVerifier
+                .create(namesFlux)
+                .expectNext("A","D","B", "E", "C","F")
+                .verifyComplete();
+    }
 }
