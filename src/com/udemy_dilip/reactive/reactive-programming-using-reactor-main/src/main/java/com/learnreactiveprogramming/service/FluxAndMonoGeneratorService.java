@@ -24,7 +24,9 @@ public class FluxAndMonoGeneratorService {
         return Flux
                 .fromIterable(List.of("jenny", "penny", "loko", "glory"))
                 .map(String::toUpperCase)
-                .filter(name -> name.length() > stringLength);
+                .filter(name -> name.length() > stringLength)
+                .doOnNext(System.out::println)
+                .doOnSubscribe(System.out::println);
     }
 
     private Flux<String> splitString(String value){
@@ -150,6 +152,9 @@ public class FluxAndMonoGeneratorService {
 //        fluxAndMonoGeneratorService.namesMonoFlatMapMany().subscribe(System.out::println);
 
 //        fluxAndMonoGeneratorService.namesFluxTransform(3).subscribe(System.out::println);
-        fluxAndMonoGeneratorService.check_merge().subscribe(System.out::println);
+//        fluxAndMonoGeneratorService.check_merge().subscribe(System.out::println);
+
+
+        fluxAndMonoGeneratorService.namesFluxFilter(3).subscribe();
     }
 }
