@@ -95,4 +95,14 @@ public class FluxAndMonoGeneratorServiceTest {
                 .expectNext("A","D","B", "E", "C","F")
                 .verifyComplete();
     }
+
+    @Test
+    void exception_flux() {
+        Flux<String> namesFlux=  testObject.exception_flux();
+
+        StepVerifier
+                .create(namesFlux).expectNext("A", "B", "C")
+                .expectError(RuntimeException.class) // exception class is optional
+                .verify();
+    }
 }

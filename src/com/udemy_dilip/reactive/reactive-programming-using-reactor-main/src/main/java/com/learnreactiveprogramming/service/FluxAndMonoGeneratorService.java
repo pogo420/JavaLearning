@@ -141,6 +141,13 @@ public class FluxAndMonoGeneratorService {
     }
 
 
+    public Flux<String> exception_flux(){
+        return Flux
+                .just("A", "B", "C")
+                .concatWith(Flux.error(new RuntimeException("Exception occurred")))
+                .concatWith(Flux.just("D"))
+                .log();
+    }
 
     public static void main(String[] args) {
         FluxAndMonoGeneratorService fluxAndMonoGeneratorService = new FluxAndMonoGeneratorService();
