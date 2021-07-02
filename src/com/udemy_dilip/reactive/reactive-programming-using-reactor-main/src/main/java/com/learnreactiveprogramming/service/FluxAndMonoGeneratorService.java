@@ -49,7 +49,8 @@ public class FluxAndMonoGeneratorService {
                 .map(String::toUpperCase)
                 .filter(name -> name.length() > stringLength)
                 .map(name -> name.length()+"-"+name)
-                .flatMap(this::splitString);
+                .flatMap(this::splitString)
+                .log();
     }
 
     public Flux<String> namesFluxFilterFmAsync(int stringLength){
@@ -157,11 +158,12 @@ public class FluxAndMonoGeneratorService {
 //        fluxAndMonoGeneratorService.namesFluxFilterFmAsync(3).subscribe(System.out::println);
 //        fluxAndMonoGeneratorService.namesMonoFlatMap().subscribe(System.out::println);
 //        fluxAndMonoGeneratorService.namesMonoFlatMapMany().subscribe(System.out::println);
-
 //        fluxAndMonoGeneratorService.namesFluxTransform(3).subscribe(System.out::println);
 //        fluxAndMonoGeneratorService.check_merge().subscribe(System.out::println);
 
 
         fluxAndMonoGeneratorService.namesFluxFilter(3).subscribe();
+
+
     }
 }
