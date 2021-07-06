@@ -29,4 +29,5 @@ class MovieReactiveServiceRestClientTest {
                 .expectNextCount(7)
                 .verifyComplete();
     }
+
 }
