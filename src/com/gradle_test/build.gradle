@@ -20,8 +20,8 @@ sourceSets {
             srcDirs 'jobs'
             compileClasspath += main.compileClasspath
         }
-        compileClasspath += sourceSets.main.output
-        runtimeClasspath += sourceSets.main.output
+        compileClasspath += sourceSets.main.output // important to add source code outside src
+        runtimeClasspath += sourceSets.main.output // important to add source code outside src
     }
 }
 
